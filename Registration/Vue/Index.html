@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <br />
+    <br />
+    <div id="f1" role="form" class="form-inline" style="margin:0px 0px 0px 500px">
+
+        <div class="form-group">
+            <label for="Name" class="col-sm-2 control-label">Name</label>
+
+            <div class="col-sm-10">
+                <input type="text" v-model="Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="col-sm-2 control-label">Email</label>
+
+            <div class="col-sm-10">
+                <input type="text" v-model="Email" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Password" class="col-sm-2 control-label">Password</label>
+
+            <div class="col-sm-10">
+                <input type="text" v-model="Password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Address" class="col-sm-2 control-label">Address</label>
+
+            <div class="col-sm-10">
+                <input type="text" v-model="Address" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Phone" class="col-sm-2 control-label">Phone</label>
+
+            <div class="col-sm-10">
+                <input type="text" v-model="Phone" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Gender" class="col-sm-2 control-label">Gender</label>
+
+            <div class="col-sm-10">
+                <input type="radio" v-model="checked" value="0">Male
+                <input type="radio" v-model="checked" value="1">Female
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Religioun" class="col-sm-2 control-label">Religioun</label>
+
+            <div class="col-sm-10">
+                <input type="checkbox" v-model="chk" value="Hindu" />Hindu
+                <input type="checkbox" v-model="chk" value="Muslim" />Muslim
+                <input type="checkbox" v-model="chk" value="Sikh" />Sikh
+                <input type="checkbox" v-model="chk" value="Buddhism" />Buddhism
+                <input type="checkbox" v-model="chk" value="Jainism" /> Jainism
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="State" class="col-sm-2 control-label">State</label>
+
+            <div class="col-sm-10">
+                <select v-model="selected">
+                    <option disabled value="">Choose An Option</option>
+                    <option>Himachal Pradesh</option>
+                    <option>Punjab</option>
+                    <option>Haryana</option>
+                    <option>Chandigarh</option>
+                    <option>Delhi</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Comments" class="col-sm-2 control-label">Comments</label>
+
+            <div class="col-sm-10">
+                <textarea v-model="text" cols="23" rows="6"></textarea>
+            </div>
+        </div>
+        <div class="container">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+
+    var allItems;// = @Html.Raw(Json.Encode(Model));
+    debugger;
+    $.ajax({
+
+        url: '@Url.Action("form", "Home")',
+        method: 'GET',
+        success: function (data) {
+            allItems = data;
+            //alert(JSON.stringify(data));
+        },
+        error: function (error) {
+            alert(JSON.stringify(error));
+        }
+    });
+
+    var a = new Vue({
+        el: '#f1',
+
+        data: {
+            Name: ' ',
+            Email: ' ',
+            Password: ' ',
+            Address: '',
+            Phone: '',
+            checked: [],
+            chk: [],
+            selected: '',
+            text: '',
+
+
+
+
+
+        },
+
+
+    });
+    </script>
+
+</body>
+</html>
